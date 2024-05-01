@@ -66,6 +66,7 @@ func (l *listaProductos) venderProducto(nombre string, cant int) {
 func (l *listaProductos) modificarPrecio(nombre string, precio int) {
 	productoExistente, err := l.buscarProducto(nombre)
 	if err == 0 && productoExistente != nil { // aumentar el stock en caso de existencia
+		fmt.Println("Modificar precio del producto:", nombre, "nuevo precio:", precio)
 		productoExistente.precio = precio
 	} else {
 		fmt.Println("El producto: ", nombre, ", no se encuentra en la lista de productos")
@@ -116,6 +117,9 @@ func main() {
 		producto{nombre: "refresco", cantidad: 15, precio: 4000},
 	)
 	fmt.Println(lProductos)
+	fmt.Println("")
+	lProductos.modificarPrecio("cacao", 3000)
+	fmt.Println(lProductos)
 }
 
 /*						Ejecución del código
@@ -135,6 +139,9 @@ Lista de productos con existencias mínimas...
 
 Haciendo uso de la función de agregar múltiples productos
 [{arroz 10 2500} {frijoles 4 2000} {Manteca 5 1000} {cacao 12 1700} {café 12 4500} {azucar 12 4500} {harina 10 3500} {fideos 20 2500} {refresco 15 4000}]
+
+Modificar precio del producto: cacao nuevo precio: 3000
+[{arroz 10 2500} {frijoles 4 2000} {Manteca 5 1000} {cacao 12 3000} {café 12 4500} {azucar 12 4500} {harina 10 3500} {fideos 20 2500} {refresco 15 4000}]
 
 Process finished with the exit code 0
 
